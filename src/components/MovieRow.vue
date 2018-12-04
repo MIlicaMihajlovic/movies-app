@@ -1,11 +1,17 @@
 <template>
     <div class="container">
-        <h3>{{ movie.title }}</h3>
-        <p>{{ movie.director }}</p>
-        <img :src="movie.imageUrl"/>
-        <p>{{ movie.relaseDate }}</p>
-        <p>{{ movie.genre }}</p>
-        <p>{{ movie.duration }}</p>
+         
+            <div class="card">       
+                <h3>{{ movie.title }}</h3>
+                <p>{{ movie.director }}</p>        
+                <img :src="movie.imageUrl" class="card-img-top" />
+                <div class="card-body">
+                    <p class="card-text">{{ movie.relaseDate }}</p>
+                    <p class="card-text">{{ movie.genre }}</p>
+                    <p class="card-text">{{ movie.duration }}</p>
+                </div>
+            </div>
+             
     </div>
 </template>
 
@@ -15,4 +21,11 @@ export default {
     props: ['movie']
 }
 </script>
+
+<style>
+.container .card {
+    width: 18rem;
+}
+</style>
+
 

@@ -1,12 +1,9 @@
 <template>
-    <div>
-        
-        <ul class="list-unstyled">
-            <li v-for="(movie, index) in movies" :key="index">
-                <movie-row :movie="movie"></movie-row>
-            </li>
-        </ul>
-        
+    <div class="container">
+
+        <div class="d-flex align-items-stretch" v-for="(movie, index) in filtredMovies" :key="index">
+            <movie-row :movie="movie"></movie-row>
+        </div>             
     </div>
 </template>
 
@@ -23,7 +20,9 @@ export default {
 
     data() {
         return {
-            movies: []
+            movies: [],
+
+            term: ''
         }
     },
 
@@ -34,6 +33,19 @@ export default {
                 vm.movies = response.data;
             })
         })
+    },
+
+    created() {
+        window.EventHub.$on('search', (term) => {
+            this.term = term
+        });
+    },
+
+    computed: {
+        filtredMovies() {
+            console.log(this.term);
+           return this.movies.filter(movie => movie.title.toLowerCase().includes(this.term.toLowerCase())) 
+        }
     }
 }
 </script>
