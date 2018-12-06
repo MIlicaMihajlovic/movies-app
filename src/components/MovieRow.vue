@@ -9,6 +9,7 @@
                     <p class="card-text">{{ movie.relaseDate }}</p>
                     <p class="card-text">{{ movie.genre }}</p>
                     <p class="card-text">{{ movie.duration }}</p>
+                    <button type="button" class="btn btn-primary">Select</button>
                 </div>
             </div>
              
