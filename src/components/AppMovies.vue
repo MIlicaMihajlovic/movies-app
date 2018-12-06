@@ -1,9 +1,17 @@
 <template>
     <div class="container">
 
-        <div class="d-flex align-items-stretch" v-for="(movie, index) in filtredMovies" :key="index">
-            <movie-row :movie="movie"></movie-row>
-        </div>             
+        <template v-if="filtredMovies.length">
+            <div class="d-flex align-items-stretch" v-for="(movie, index) in filtredMovies" :key="index">
+                <movie-row :movie="movie"></movie-row>
+            </div>
+        </template>
+        <template v-else>
+            <div>
+                <p>Nema tog filma u nasoj listi</p>
+                <movie-row :movie="movie"></movie-row>
+            </div>
+        </template>
     </div>
 </template>
 
